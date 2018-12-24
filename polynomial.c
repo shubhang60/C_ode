@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
-struct polynode
+struct polynode //Creates the basic node or single term of the polynomial
 {
     int coff;
     int expo;
@@ -58,7 +58,7 @@ int main()
     return 0;
 }
 
-node *create_poly(node *first)
+node *create_poly(node *first) //Creates a new polynomial
 {
     node *new_node, *var_node;
     int co, ex;
@@ -99,7 +99,7 @@ node *create_poly(node *first)
     return (first);
 }
 
-node *display_poly(node *first)
+node *display_poly(node *first) //Displays the polynomial
 {
     node *var_node;
     var_node = first;
@@ -121,7 +121,7 @@ node *display_poly(node *first)
     return (first);
 }
 
-node *add_poly(node *result, node *first, node *second)
+node *add_poly(node *result, node *first, node *second) //Adds the polynomial
 {
     node *var_node1, *var_node2;
     int sum;
@@ -166,7 +166,7 @@ node *add_poly(node *result, node *first, node *second)
     return (result);
 }
 
-node *sub_poly(node *result, node *first, node *second)
+node *sub_poly(node *result, node *first, node *second) //Substract the polynomial
 {
     node *var_node1, *var_node2;
     int diff;
@@ -211,7 +211,7 @@ node *sub_poly(node *result, node *first, node *second)
     return (result);
 }
 
-node *add_node(node *first, int co, int ex)
+node *add_node(node *first, int co, int ex) //Add new term to polynomial
 {
     node *var_node, *new_node;
     new_node = (node *)malloc(sizeof(node));
@@ -233,7 +233,7 @@ node *add_node(node *first, int co, int ex)
     }
     return (first);
 }
-node *sort_ll(node *first)
+node *sort_ll(node *first) // Sort the terms according to exponent order
 {
     node *var_node1, *var_node2, *temp_node;
     int temp_co, temp_ex;
