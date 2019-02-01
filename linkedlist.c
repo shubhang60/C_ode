@@ -7,7 +7,7 @@ struct antinode //Creating a node.
     int data;
     struct antinode *next;
 };
-typedef struct antinode node;// Node datatype creation
+typedef struct antinode node; // Node datatype creation
 node *start = NULL;
 node *create_ll(node *);
 node *display_ll(node *);
@@ -20,15 +20,15 @@ node *delete_end(node *);
 node *delete_aftr(node *);
 node *delete_node(node *, int);
 node *delete_ll(node *);
-node *dublicate(node *);
+node *duplicate(node *);
 node *sort_ll(node *);
 
 int main()
 {
     int option;
+    printf("\n******Linked List Operations******");
     do
     {
-        printf("\n******Linked List Operations******");
         printf("\n1. Create a Linked list");
         printf("\n2. Display a linked list");
         printf("\n3. Insert a node at the beginning");
@@ -41,7 +41,7 @@ int main()
         printf("\n10. Delete nodes after a data");
         printf("\n11. Delete the linked list");
         printf("\n12. Sort the linked list");
-        printf("\n13. Remove dublicate entries");
+        printf("\n13. Remove duplicate entries");
         printf("\n14. EXIT");
         printf("\nEnter your option no.");
         scanf("%d", &option);
@@ -107,14 +107,13 @@ int main()
             display_ll(start);
             break;
         case 13:
-            start = dublicate(start);
+            start = duplicate(start);
             printf("Refined list is :\n");
             display_ll(start);
         default:
-            printf("\nWrong Choice !!!");
             break;
         }
-    } while (option != 13);
+    } while (option != 14);
     return 0;
 }
 
@@ -338,7 +337,7 @@ node *delete_ll(node *first) //Delete the linked list
     return (first);
 }
 
-node *dublicate(node *first) //Remove the duplicates
+node *duplicate(node *first) //Remove the duplicates
 {
     node *var_node, *free_node;
     int temp;
@@ -346,16 +345,16 @@ node *dublicate(node *first) //Remove the duplicates
     while ((*var_node).next != NULL)
     {
         temp = (*var_node).data;
-        free_node = first;
+        free_node = (*var_node).next;
         while ((*free_node).next != NULL)
         {
-            if (temp == (*free_node).data && (*var_node).next != (*free_node).next)
+            if ((*free_node).data == temp)
             {
-                first = delete_node(first, temp);
+                free_node = delete_node(free_node, temp);
             }
-            free_node = (*free_node).next;
+            free_node=(*free_node).next;
         }
-        var_node = (*var_node).next;
+        var_node=(*var_node).next;
     }
     return (first);
-}
+}  
